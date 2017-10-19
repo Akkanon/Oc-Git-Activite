@@ -1,0 +1,12 @@
+form
+{
+	text-align: center;
+}
+input
+{
+	margin: 5px;
+}
+.chatLigne:nth-of-type(odd)
+{
+	background-color: #DDD;
+}

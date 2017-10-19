@@ -61,6 +61,5 @@ $req = $bdd->query('SELECT pseudo, message, DATE_FORMAT(date_post, \'Le %d/%m/%Y
 
 	?>
 	</div>
-<p>Ajout capital !</p>
 </body>
 </html>

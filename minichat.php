@@ -1,6 +1,7 @@
 <?php
 
 //INITIALISATION DE LA BASE DE DONNÉES
+
 try
 {
 	$bdd = new PDO('mysql:host=localhost;dbname=test;charset=utf8','root','', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -11,6 +12,7 @@ catch(Exception $e)
 }
 
 //VÉRIFICATION DES DONNÉES ENTRÉES SI ELLES EXISTENT
+
 if(isset($_POST['pseudo'])&&isset($_POST['message']))
 {
 	//SÉCURISATION DES ENTRÉES POUR ÉVITER INJECTIONS SQL ET FAILLE XSS
@@ -25,6 +27,7 @@ if(isset($_POST['pseudo'])&&isset($_POST['message']))
 }
 
 //REQUÈTE DE TOUS LES MESSAGES POSTÉS EN ORDRE INVERSÉ
+
 $req = $bdd->query('SELECT pseudo, message, DATE_FORMAT(date_post, \'Le %d/%m/%Y à %Hh%i\') AS date_fr FROM minichat ORDER BY ID DESC');
 
 ?>
@@ -46,8 +49,9 @@ $req = $bdd->query('SELECT pseudo, message, DATE_FORMAT(date_post, \'Le %d/%m/%Y
 	</form>
 	<div id="chat">
 	<?php
-
+	
 	//BOUCLE POUR LISTER LES DIFFÉRENTS MESSAGES EXTRAITS DE LA BDD
+
 	while($donnee = $req->fetch())
 	{
 		echo '<div class="chatLigne"><em>' . $donnee['date_fr'] . '</em><strong> ' . $donnee['pseudo'] . ' : </strong>' . $donnee['message'] . '</div>';
@@ -57,5 +61,6 @@ $req = $bdd->query('SELECT pseudo, message, DATE_FORMAT(date_post, \'Le %d/%m/%Y
 
 	?>
 	</div>
+<p>Ajout capital !</p>
 </body>
 </html>
